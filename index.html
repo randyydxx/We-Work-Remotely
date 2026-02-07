@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Error!</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .error-box {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .error-code {
+      font-size: 64px;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+
+    .error-message {
+      font-size: 18px;
+      margin: 10px 0 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #ff4d4d;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff1a1a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-box">
+    <div class="error-code" id="errorCode">404</div>
+    <div class="error-message" id="errorMessage">
+      Halaman tidak ditemukan
+    </div>
+    <button onclick="reloadPage()">Coba Lagi</button>
+  </div>
+
+  <script>
+    function reloadPage() {
+      alert("Mencoba memuat ulang halaman...");
+      location.reload();
+    }
+
+    // Contoh error custom dari JS
+    console.error("ERROR 404: Page not found");
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CRITICAL ERROR</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  background: black;
+  overflow: hidden;
+  color: red;
+}
+
+/* glitch text */
+.error {
+  position: absolute;
+  font-size: 24px;
+  animation: glitch 0.15s infinite, move 2s infinite linear;
+  text-shadow:
+    2px 0 red,
+   -2px 0 cyan,
+    0 2px lime;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0,0) skew(0deg); opacity: 1; }
+  20% { transform: translate(-2px,2px) skew(5deg); }
+  40% { transform: translate(2px,-2px) skew(-5deg); }
+  60% { transform: translate(-1px,1px) skew(3deg); opacity: .7; }
+  80% { transform: translate(1px,-1px) skew(-3deg); }
+  100% { transform: translate(0,0); opacity: 1; }
+}
+
+@keyframes move {
+  0% { top: 0; left: 0; }
+  100% { top: 100vh; left: 100vw; }
+}
+
+.flash {
+  animation: flash 0.1s infinite;
+}
+
+@keyframes flash {
+  0% { background: black; }
+  50% { background: darkred; }
+  100% { background: black; }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const errors = [
+  "ERROR 500: INTERNAL CHAOS",
+  "UNDEFINED IS NOT A FUNCTION",
+  "STACK OVERFLOW",
+  "NULL POINTER EXCEPTION",
+  "CRITICAL SYSTEM FAILURE",
+  "MEMORY LEAK DETECTED",
+  "JS CRASHED AGAIN",
+  "WHY IS THIS BROKEN",
+  "SYNTAX ERROR FROM HELL",
+  "404 REALITY NOT FOUND"
+];
+
+function spawnError() {
+  const el = document.createElement("div");
+  el.className = "error";
+  el.innerText = errors[Math.floor(Math.random() * errors.length)];
+
+  el.style.top = Math.random() * window.innerHeight + "px";
+  el.style.left = Math.random() * window.innerWidth + "px";
+  el.style.fontSize = Math.random() * 30 + 12 + "px";
+  el.style.color = `rgb(${Math.random()*255},0,0)`;
+
+  document.body.appendChild(el);
+
+  setTimeout(() => {
+    el.remove();
+  }, 3000);
+}
+
+// chaos loop
+setInterval(spawnError, 100);
+
+// random screen flash
+setInterval(() => {
+  document.body.classList.toggle("flash");
+}, 500);
+
+// fake error spam
+setInterval(() => {
+  console.error("CRITICAL ERROR: SYSTEM UNSTABLE");
+}, 50);
+
+// shake screen
+setInterval(() => {
+  document.body.style.transform =
+    `translate(${Math.random()*10-5}px, ${Math.random()*10-5}px)`;
+}, 100);
+</script>
+
+</body>
+</html>
